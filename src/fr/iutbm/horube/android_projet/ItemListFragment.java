@@ -1,13 +1,13 @@
 package fr.iutbm.horube.android_projet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import fr.iutbm.horube.android_projet.dummy.DummyContent;
 
 /**
  * A list fragment representing a list of Items. This fragment also supports
@@ -19,6 +19,7 @@ import fr.iutbm.horube.android_projet.dummy.DummyContent;
  * interface.
  */
 public class ItemListFragment extends ListFragment {
+	private List<GtsModele> lstGtsModele;
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -70,10 +71,27 @@ public class ItemListFragment extends ListFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// TODO: replace with a real list adapter.
-		setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
+		/*setListAdapter(new ArrayAdapter<GtsModelContent.GtsModel>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, DummyContent.ITEMS));
+				android.R.id.text1, GtsModelContent.ITEMS));*/
+		
+		lstGtsModele = getGtsModele();
+		setListAdapter(new GtsModeleAdapter(getActivity(), lstGtsModele));
+	}
+
+	private List<GtsModele> getGtsModele() {
+		List<GtsModele> lst = new ArrayList<GtsModele>();
+		
+		lst.add(new GtsModele("1","Lapin", "http://www.gts.sourceforge.net/samples/bunny.gts.gz", R.drawable.lapin, "/lapin"));
+		lst.add(new GtsModele("2","Cube", "http://www.gts.sourceforge.net/samples/cube.gts.gz", R.drawable.cube, "/lapin"));
+		lst.add(new GtsModele("3","Ruban", "http://www.gts.sourceforge.net/samples/helix2.gts.gz", R.drawable.ruban, "/lapin"));
+		lst.add(new GtsModele("4","Sphere", "http://www.gts.sourceforge.net/samples/epcot.gts.gz", R.drawable.sphere, "/lapin"));
+		lst.add(new GtsModele("5","Cheval", "http://www.gts.sourceforge.net/samples/horse.gts.gz", R.drawable.cheval, "/lapin"));
+		lst.add(new GtsModele("6","Pyramide", "http://www.gts.sourceforge.net/samples/cone.gts.gz", R.drawable.pyramide, "/lapin"));
+		lst.add(new GtsModele("7","Tête", "http://www.gts.sourceforge.net/samples/head.gts.gz", R.drawable.tete, "/lapin"));
+		lst.add(new GtsModele("8","Coupe", "http://www.gts.sourceforge.net/samples/goblet.gts.gz", R.drawable.coupe, "/lapin"));
+		
+		return lst;
 	}
 
 	@Override
@@ -116,7 +134,8 @@ public class ItemListFragment extends ListFragment {
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
+		//mCallbacks.onItemSelected(GtsModelContent.ITEMS.get(position).id);
+		mCallbacks.onItemSelected(lstGtsModele.get(position).id);
 	}
 
 	@Override
