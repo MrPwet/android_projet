@@ -82,11 +82,11 @@ public class ItemListFragment extends ListFragment {
 	private List<GtsModele> getGtsModele() {
 		List<GtsModele> lst = new ArrayList<GtsModele>();
 		
-        lst.add(new GtsModele("1","Lapin", "bunny.gts.gz", R.drawable.lapin, "/lapin"));
-        lst.add(new GtsModele("2","Cube", "cube.gts.gz", R.drawable.cube, "/lapin"));
-        lst.add(new GtsModele("3","Sphere", "epcot.gts.gz", R.drawable.sphere, "/lapin"));
-        lst.add(new GtsModele("4","Pyramide", "cone.gts.gz", R.drawable.pyramide, "/lapin"));
-        lst.add(new GtsModele("5","Coupe", "goblet.gts.gz", R.drawable.coupe, "/lapin"));
+        lst.add(new GtsModele("1","Lapin", "bunny", R.drawable.lapin, "/lapin"));
+        lst.add(new GtsModele("2","Cube", "cube", R.drawable.cube, "/lapin"));
+        lst.add(new GtsModele("3","Sphere", "epcot", R.drawable.sphere, "/lapin"));
+        lst.add(new GtsModele("4","Pyramide", "cone", R.drawable.pyramide, "/lapin"));
+        lst.add(new GtsModele("5","Coupe", "goblet", R.drawable.coupe, "/lapin"));
 		
 		return lst;
 	}

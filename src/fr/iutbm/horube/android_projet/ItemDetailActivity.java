@@ -1,5 +1,7 @@
 package fr.iutbm.horube.android_projet;
 
+import java.io.IOException;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -29,7 +31,14 @@ public class ItemDetailActivity extends FragmentActivity {
 		//on fait getUrl, mais c'est pas unr URL, c'est un nom d'asset
 		
 		GtsModele gtsm = CurrentGtsSingleton.getInstance();
-		setContentView(new CanvasGTS(this, CurrentGtsSingleton.getInstance().getUrl()));
+		try {
+			Shape shape = GtsParser.parse(this, gtsm.getUrl());
+			GtsParserSingleton.setInstance(shape);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		setContentView(new CanvasGTS(this));
 		
 		setContentView(R.layout.details_test);
 		
