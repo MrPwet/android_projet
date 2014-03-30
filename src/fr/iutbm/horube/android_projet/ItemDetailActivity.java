@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 /**
  * An activity representing a single Item detail screen. This activity is only
@@ -15,12 +18,46 @@ import android.view.MenuItem;
  * a {@link ItemDetailFragment}.
  */
 public class ItemDetailActivity extends FragmentActivity {
+	CanvasGTS test = null;
+	LinearLayout main = null;
+	RadioGroup transformations = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_item_detail);
-		setContentView(new CanvasGTS(this));
+		//setContentView(new CanvasGTS(this));
+		setContentView(R.layout.details_test);
+		
+		main = (LinearLayout)this.findViewById(R.id.LinearLayout1);
+		test = new CanvasGTS(this);
+		transformations = (RadioGroup)this.findViewById(R.id.transformations);
+		main.addView(test);
+		
+        test.setOnTouchListener(new OnSwipeTouchListener(this) {
+            public void onSwipeTop() {
+            	if(transformations.getCheckedRadioButtonId() == R.id.translation) {
+            		Toast.makeText(ItemDetailActivity.this, "translate en haut", Toast.LENGTH_SHORT).show();
+            	}
+            }
+            public void onSwipeRight() {
+            	if(transformations.getCheckedRadioButtonId() == R.id.translation) {
+            		test.translateGTS("horizontal", 5);
+            		Toast.makeText(ItemDetailActivity.this, "translate à droite", Toast.LENGTH_SHORT).show();
+            	}
+            }
+            public void onSwipeLeft() {
+            	if(transformations.getCheckedRadioButtonId() == R.id.translation) {
+            		test.translateGTS("horizontal", -5);
+            		Toast.makeText(ItemDetailActivity.this, "translate à gauche", Toast.LENGTH_SHORT).show();
+            	}
+            }
+            public void onSwipeBottom() {
+            	if(transformations.getCheckedRadioButtonId() == R.id.translation) {
+            		Toast.makeText(ItemDetailActivity.this, "translate en bas", Toast.LENGTH_SHORT).show();
+            	}
+            }
+        });
 
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);

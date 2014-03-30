@@ -1,7 +1,7 @@
 package fr.iutbm.horube.android_projet;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Face {
 	List<Edge> edges;

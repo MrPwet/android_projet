@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/selection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RadioGroup
+            android:id="@+id/transformations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/zoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Zoom" />
+
+            <RadioButton
+                android:id="@+id/translation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Translation" />
+
+            <RadioButton
+                android:id="@+id/rotation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rotation" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/axes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="45dp" >
+
+            <RadioButton
+                android:id="@+id/axeX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Axe X" />
+
+            <RadioButton
+                android:id="@+id/axeY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Axe Y" />
+
+            <RadioButton
+                android:id="@+id/axeZ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Axe Z" />
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>
