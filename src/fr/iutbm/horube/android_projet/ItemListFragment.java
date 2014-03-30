@@ -82,14 +82,11 @@ public class ItemListFragment extends ListFragment {
 	private List<GtsModele> getGtsModele() {
 		List<GtsModele> lst = new ArrayList<GtsModele>();
 		
-		lst.add(new GtsModele("1","Lapin", "http://www.gts.sourceforge.net/samples/bunny.gts.gz", R.drawable.lapin, "/lapin"));
-		lst.add(new GtsModele("2","Cube", "http://www.gts.sourceforge.net/samples/cube.gts.gz", R.drawable.cube, "/lapin"));
-		lst.add(new GtsModele("3","Ruban", "http://www.gts.sourceforge.net/samples/helix2.gts.gz", R.drawable.ruban, "/lapin"));
-		lst.add(new GtsModele("4","Sphere", "http://www.gts.sourceforge.net/samples/epcot.gts.gz", R.drawable.sphere, "/lapin"));
-		lst.add(new GtsModele("5","Cheval", "http://www.gts.sourceforge.net/samples/horse.gts.gz", R.drawable.cheval, "/lapin"));
-		lst.add(new GtsModele("6","Pyramide", "http://www.gts.sourceforge.net/samples/cone.gts.gz", R.drawable.pyramide, "/lapin"));
-		lst.add(new GtsModele("7","Tête", "http://www.gts.sourceforge.net/samples/head.gts.gz", R.drawable.tete, "/lapin"));
-		lst.add(new GtsModele("8","Coupe", "http://www.gts.sourceforge.net/samples/goblet.gts.gz", R.drawable.coupe, "/lapin"));
+        lst.add(new GtsModele("1","Lapin", "bunny.gts.gz", R.drawable.lapin, "/lapin"));
+        lst.add(new GtsModele("2","Cube", "cube.gts.gz", R.drawable.cube, "/lapin"));
+        lst.add(new GtsModele("3","Sphere", "epcot.gts.gz", R.drawable.sphere, "/lapin"));
+        lst.add(new GtsModele("4","Pyramide", "cone.gts.gz", R.drawable.pyramide, "/lapin"));
+        lst.add(new GtsModele("5","Coupe", "goblet.gts.gz", R.drawable.coupe, "/lapin"));
 		
 		return lst;
 	}
@@ -136,6 +133,7 @@ public class ItemListFragment extends ListFragment {
 		// fragment is attached to one) that an item has been selected.
 		//mCallbacks.onItemSelected(GtsModelContent.ITEMS.get(position).id);
 		mCallbacks.onItemSelected(lstGtsModele.get(position).id);
+		CurrentGtsSingleton.setInstance(lstGtsModele.get(position));
 	}
 
 	@Override

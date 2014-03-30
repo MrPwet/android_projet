@@ -2,19 +2,21 @@ package fr.iutbm.horube.android_projet;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
 
 public class GtsParser {
-	public static Shape parse(String file) {
+	public static Shape parse(InputStream inputStream) {
 		List<Vertex> lstVertex = new ArrayList<Vertex>();
 		List<Edge> lstEdges = new ArrayList<Edge>();
 		List<Face> lstFaces = new ArrayList<Face>();
 		
 		try {
-			GZIPInputStream gzipStream = new GZIPInputStream(new FileInputStream(file));
+			GZIPInputStream gzipStream = new GZIPInputStream(inputStream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(gzipStream));
 			String line;
 			int nbVertex = 0, nbEdges = 0, nbFaces = 0;
@@ -65,5 +67,18 @@ public class GtsParser {
 		}
 		
 		return new Shape(lstVertex, lstEdges, lstFaces);
+	}
+	
+	public static Shape parse(String filename){
+		
+		FileInputStream fis = null;
+		try {
+			fis = new FileInputStream(filename);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return parse(fis);
+		
 	}
 }

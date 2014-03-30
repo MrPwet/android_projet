@@ -26,7 +26,11 @@ public class ItemDetailActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_item_detail);
-		//setContentView(new CanvasGTS(this));
+		//on fait getUrl, mais c'est pas unr URL, c'est un nom d'asset
+		
+		GtsModele gtsm = CurrentGtsSingleton.getInstance();
+		setContentView(new CanvasGTS(this, CurrentGtsSingleton.getInstance().getUrl()));
+		
 		setContentView(R.layout.details_test);
 		
 		main = (LinearLayout)this.findViewById(R.id.LinearLayout1);

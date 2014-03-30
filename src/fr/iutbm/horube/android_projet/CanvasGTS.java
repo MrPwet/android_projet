@@ -1,5 +1,6 @@
 package fr.iutbm.horube.android_projet;
 
+import java.io.IOException;
 import java.util.List;
 
 import android.content.Context;
@@ -29,7 +30,12 @@ class CanvasGTS extends SurfaceView implements SurfaceHolder.Callback {
 	
 	public CanvasGTS(Context context, String file) {
 		super(context);
-		gts = GtsParser.parse(file);
+		try {
+			gts = GtsParser.parse(context.getAssets().open(file));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		sh = getHolder();
 		sh.addCallback(this);
 		paint.setColor(Color.BLACK);
